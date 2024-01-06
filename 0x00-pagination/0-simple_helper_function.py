@@ -4,8 +4,8 @@
 
 def index_range(page, page_size):
     '''
-    return a tuple of size two containing a start index and an end index 
-    correponding to the range of indexes 
+    return a tuple of size two containing a start index and an end index
+    correponding to the range of indexes
     '''
     if page >= 1:
         start_index = (page - 1) * page_size
