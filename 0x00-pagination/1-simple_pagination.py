@@ -1,5 +1,8 @@
 #!/usr/bin/env python3
 ''' Simple Helper Function '''
+import csv
+import math
+from typing import List
 
 
 def index_range(page, page_size):
@@ -11,10 +14,6 @@ def index_range(page, page_size):
         start_index = (page - 1) * page_size
         end_index = start_index + page_size
         return start_index, end_index
-
-import csv
-import math
-from typing import List
 
 
 class Server:
@@ -38,7 +37,7 @@ class Server:
 
     def get_page(self, page: int = 1, page_size: int = 10) -> List[List]:
         '''
-        paginate dataset and return appropriate page of the dataset 
+        paginate dataset and return appropriate page of the dataset
         '''
         assert isinstance(page, int) and page > 0
         assert isinstance(page_size, int) and page_size > 0
@@ -48,4 +47,4 @@ class Server:
             index = index_range(page, page_size)
             return row_list[index[0]:index[1]]
         except ImportError:
-            return []      
+            return []
