@@ -48,26 +48,19 @@ class Server:
             return row_list[index[0]:index[1]]
         except ImportError:
             return []
-        
-        
-    def get_hyper(self, page: int = 1, page_size: int = 10) -> List[List]:
+
+    def get_hyper(self, page: int = 1, page_size: int = 10) -> dict:
         """
-        Dictionary containing information about the dataset page.
-        """
-        dataset_page = self.get_page(page, page_size)
-
-        total_pages = len(self.dataset())
-
-        next_page = page + 1 if page < total_pages else None
-        prev_page = page - 1 if page > 1 else None
-
-        result = {
-            'page_size': page_size if page_size <= len(dataset_page) else len(dataset_page),
-            'page': page,
-            'data': dataset_page,
-            'next_page': next_page,
-            'prev_page': prev_page,
-            'total_pages': total_pages
+        Returns a page of the dataset.
+       """
+        total_pages = len(self.dataset()) // page_size + 1
+        data = self.get_page(page, page_size)
+        info = {
+            "page": page,
+            "page_size": page_size if page_size <= len(data) else len(data),
+            "total_pages": total_pages,
+            "data": data,
+            "prev_page": page - 1 if page > 1 else None,
+            "next_page": page + 1 if page + 1 <= total_pages else None
         }
-
-        return result
+        return info
