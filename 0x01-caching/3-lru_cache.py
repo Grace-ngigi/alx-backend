@@ -23,7 +23,7 @@ class LRUCache(BaseCaching):
                 del self.order_list[0]
             if key in self.order_list:
                 del self.order_list[self.order_list.index(key)]
-            self.order_list.append(key)   
+            self.order_list.append(key)
             self.cache_data[key] = item
 
     def get(self, key):
