@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 ''' routes '''
 from flask import Flask, render_template
-from babel_flask import Babel
+from flask_babel import Babel
 
 
 class Config():
