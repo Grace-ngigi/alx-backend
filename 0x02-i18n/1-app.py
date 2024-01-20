@@ -3,17 +3,18 @@
 from flask import Flask, render_template
 from babel_flask import Babel
 
+
 class Config():
     ''' config class'''
     LANGUAGES = ["en", "fr"]
     BABEL_LOCALE_DEFAULT = "en"
     BABEL_TIMEZONE_DEFAULT = "UTC"
- 
+
 
 app = Flask(__name__)
 app.url_map.strict_slashes = False
 app.config.from_object(Config)
-babel = Babel(app) 
+babel = Babel(app)
 
 
 @app.route('/')
