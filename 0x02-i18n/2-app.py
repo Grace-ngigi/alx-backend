@@ -6,7 +6,7 @@ from flask_babel import Babel
 
 app = Flask(__name__)
 app.url_map.strict_slashes = False
-babel = Babel(app) 
+babel = Babel(app)
 
 
 class Config():
@@ -14,6 +14,7 @@ class Config():
     LANGUAGES = ["en", "fr"]
     BABEL_DEFAULT_LOCALE = "en"
     BABEL_DEFAULT_TIMEZONE = "UTC"
+
 
 app.config.from_object(Config)
 
@@ -26,7 +27,7 @@ def get_locale():
 @app.route('/')
 def hola() -> str:
     ''' basic flask app '''
-    return render_template('1-index.html')
+    return render_template('2-index.html')
 
 
 if __name__ == '__main__':
